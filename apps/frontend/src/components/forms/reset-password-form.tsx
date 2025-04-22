@@ -27,11 +27,14 @@ import {
     CardContent,
     CardFooter,
 } from '@/components/ui/card';
+import { Eye, EyeOff } from 'lucide-react'; // Add icons for show/hide password
 
 type FormData = z.infer<typeof resetPasswordSchema>;
 
 export function ResetPasswordForm() {
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false); // State for password visibility
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
     const router = useRouter();
     const searchParams = useSearchParams();
     const email = searchParams.get('email') || '';
@@ -61,7 +64,7 @@ export function ResetPasswordForm() {
     return (
         <Card className="w-full">
             <CardHeader className="text-center space-y-1">
-                <CardTitle className="text-3xl font-semibold text-gray-800">Reset Password</CardTitle>
+                <CardTitle className="text-3xl font-semibold text-gray-100">Reset Password</CardTitle>
                 <CardDescription className="text-base text-muted-foreground">
                     Enter your new password
                 </CardDescription>
@@ -79,11 +82,21 @@ export function ResetPasswordForm() {
                                 <FormItem>
                                     <FormLabel>New Password</FormLabel>
                                     <FormControl>
-                                        <Input
-                                            {...field}
-                                            type="password"
-                                            placeholder="New Password"
-                                        />
+                                        <div className="relative">
+                                            <Input
+                                                {...field}
+                                                type={showPassword ? 'text' : 'password'}
+                                                placeholder="New Password"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowPassword((prev) => !prev)}
+                                                className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary focus:outline-none"
+                                                tabIndex={-1}
+                                            >
+                                                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                            </button>
+                                        </div>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -97,11 +110,21 @@ export function ResetPasswordForm() {
                                 <FormItem>
                                     <FormLabel>Confirm Password</FormLabel>
                                     <FormControl>
-                                        <Input
-                                            {...field}
-                                            type="password"
-                                            placeholder="Confirm Password"
-                                        />
+                                        <div className="relative">
+                                            <Input
+                                                {...field}
+                                                type={showConfirmPassword ? 'text' : 'password'}
+                                                placeholder="Confirm Password"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowConfirmPassword((prev) => !prev)}
+                                                className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary focus:outline-none"
+                                                tabIndex={-1}
+                                            >
+                                                {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                            </button>
+                                        </div>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
