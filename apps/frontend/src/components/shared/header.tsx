@@ -5,7 +5,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/lib/redux/store';
 import { logout } from '@/lib/redux/features/auth/auth-slice';
 import { Button } from '@/components/ui/button';
-import { UserCircle, LogOut } from 'lucide-react';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export function Header() {
     const dispatch = useDispatch();
@@ -16,32 +25,42 @@ export function Header() {
     };
 
     return (
-        <header className="bg-white shadow">
+        <header className="bg-gray-100 shadow">
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
-                    <Link href="/dashboard" className="font-semibold text-xl">
-                        Dashboard
+                    {/* Logo */}
+                    <Link href="/profile" className="text-2xl font-bold text-black">
+                        AJK-PSC
                     </Link>
 
-                    <nav className="flex items-center space-x-4">
-                        <Link
-                            href="/profile"
-                            className="flex items-center text-gray-700 hover:text-gray-900"
-                        >
-                            <UserCircle className="w-5 h-5 mr-2" />
-                            {user?.firstName} {user?.lastName}
-                        </Link>
+                    {/* Avatar Dropdown */}
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" className="flex items-center space-x-2 bg-gray-600 hover:bg-gray-300 rounded-full p-2">
+                                <Avatar>
+                                    <AvatarImage src="https://github.com/shadcn.png" />
+                                    <AvatarFallback>CN</AvatarFallback>
+                                </Avatar>
 
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={handleLogout}
-                            className="text-gray-700 hover:text-gray-900"
-                        >
-                            <LogOut className="w-5 h-5 mr-2" />
-                            Logout
-                        </Button>
-                    </nav>
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" className="w-56">
+                            <DropdownMenuLabel>
+                                Welcome, {user?.email}🙂
+                            </DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem asChild>
+                                <Link href="/profile">My Account</Link>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem asChild>
+                                <Link href="/change-password">Change Password</Link>
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem onClick={handleLogout} className="text-red-500">
+                                Logout
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
             </div>
         </header>

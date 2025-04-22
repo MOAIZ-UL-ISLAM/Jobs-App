@@ -4,6 +4,7 @@ import { LoginCredentials, RegisterData, ResetPasswordData } from '@/types/auth'
 export const authService = {
     async login(credentials: LoginCredentials) {
         const { data } = await api.post('/auth/login', credentials);
+        console.log(data);
         return data;
     },
 

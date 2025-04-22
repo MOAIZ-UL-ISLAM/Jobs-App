@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
         request.nextUrl.pathname.startsWith('/forgot-password');
 
     if (isAuthPage && token) {
-        return NextResponse.redirect(new URL('/dashboard', request.url));
+        return NextResponse.redirect(new URL('/profile', request.url));
     }
 
     if (!isAuthPage && !token) {
@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
     matcher: [
-        '/dashboard/:path*',
+        // '/dashboard/:path*',
         '/profile/:path*',
         '/login',
         '/register',

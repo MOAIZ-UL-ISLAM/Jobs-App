@@ -3,7 +3,11 @@ import { authService } from '@/services/auth';
 import { AuthState, LoginCredentials, RegisterData } from '@/types/auth';
 
 const initialState: AuthState = {
-  user: null,
+  // user: null,
+  user: typeof window !== 'undefined'
+    ? JSON.parse(localStorage.getItem('user') || 'null')
+    : null,
+
   token: typeof window !== 'undefined' ? localStorage.getItem('token') : null,
   isAuthenticated: false,
   loading: false,
@@ -82,6 +86,10 @@ const authSlice = createSlice({
       // Get Profile
       .addCase(getProfile.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        state.token = action.payload.token;
+        localStorage.setItem('token', action.payload.token);
+        localStorage.setItem('user', JSON.stringify(action.payload.user));
+
       });
   },
 });

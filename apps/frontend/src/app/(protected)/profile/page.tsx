@@ -3,10 +3,11 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '@/lib/redux/store';
 import { Card } from '@/components/ui/card';
-import { formatDate } from '@/lib/utils';
 
 export default function ProfilePage() {
     const { user } = useSelector((state: RootState) => state.auth);
+    console.log(user);
+
 
     if (!user) return null;
 
@@ -26,35 +27,15 @@ export default function ProfilePage() {
                         <p className="mt-1">{user.firstName} {user.lastName}</p>
                     </div>
 
-                    <div>
-                        <label className="text-sm font-medium text-gray-500">Father's Name</label>
-                        <p className="mt-1">{user.fatherName}</p>
-                    </div>
+
 
                     <div>
                         <label className="text-sm font-medium text-gray-500">Email</label>
                         <p className="mt-1">{user.email}</p>
                     </div>
 
-                    <div>
-                        <label className="text-sm font-medium text-gray-500">CNIC</label>
-                        <p className="mt-1">{user.cnic}</p>
-                    </div>
 
-                    <div>
-                        <label className="text-sm font-medium text-gray-500">District</label>
-                        <p className="mt-1">{user.district}</p>
-                    </div>
 
-                    <div>
-                        <label className="text-sm font-medium text-gray-500">Date of Birth</label>
-                        <p className="mt-1">{formatDate(user.dob)}</p>
-                    </div>
-
-                    <div>
-                        <label className="text-sm font-medium text-gray-500">Joined</label>
-                        <p className="mt-1">{formatDate(user.createdAt)}</p>
-                    </div>
                 </div>
             </Card>
         </div>
