@@ -192,9 +192,9 @@ export const getDistricts = async (req: Request, res: Response): Promise<void> =
     try {
         // List of pre-defined districts from User model
         const districts = [
-            'Islamabad', 'Karachi', 'Lahore', 'Peshawar', 'Quetta', 'Faisalabad',
-            'Rawalpindi', 'Multan', 'Gujranwala', 'Sialkot', 'Hyderabad'
-        ];
+            'Muzaffarabad', 'Kotli', 'Sundhoti', 'Bagh', 'Rawalakot', 'Neelum',
+            'Jhellum', 'Refugees-1947', 'Refugees-1989', 'Mirpur', 'Bhimbher',
+            'Poonch',];
 
         res.status(200).json({ districts });
     } catch (error) {
