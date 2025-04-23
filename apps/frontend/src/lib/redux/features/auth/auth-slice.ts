@@ -3,14 +3,12 @@ import { authService } from '@/services/auth';
 import { AuthState, LoginCredentials, RegisterData } from '@/types/auth';
 
 const initialState: AuthState = {
-  // user: null,
   user: typeof window !== 'undefined'
     ? JSON.parse(localStorage.getItem('user') || 'null')
     : null,
-
   token: typeof window !== 'undefined' ? localStorage.getItem('token') : null,
-  isAuthenticated: false,
-  loading: false,
+  isAuthenticated: typeof window !== 'undefined' ? !!localStorage.getItem('token') : false,
+  loading: true,
   error: null,
 };
 
@@ -32,9 +30,13 @@ export const register = createAsyncThunk(
 
 export const getProfile = createAsyncThunk(
   'auth/getProfile',
-  async () => {
-    const response = await authService.getProfile();
-    return response;
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await authService.getProfile();
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data?.message || 'Failed to fetch profile');
+    }
   }
 );
 
@@ -46,7 +48,9 @@ const authSlice = createSlice({
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
+      state.loading = false;
       localStorage.removeItem('token');
+      localStorage.removeItem('user');
     },
     clearError: (state) => {
       state.error = null;
@@ -65,6 +69,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         localStorage.setItem('token', action.payload.token);
+        localStorage.setItem('user', JSON.stringify(action.payload.user));
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
@@ -84,12 +89,29 @@ const authSlice = createSlice({
         state.error = action.error.message || 'Registration failed';
       })
       // Get Profile
+      .addCase(getProfile.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(getProfile.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = true;
         state.user = action.payload.user;
-        state.token = action.payload.token;
-        localStorage.setItem('token', action.payload.token);
+        // Only update token if provided; otherwise, preserve existing token
+        if (action.payload.token) {
+          state.token = action.payload.token;
+          localStorage.setItem('token', action.payload.token);
+        }
         localStorage.setItem('user', JSON.stringify(action.payload.user));
-
+      })
+      .addCase(getProfile.rejected, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = false;
+        state.user = null;
+        state.token = null;
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        state.error = action.payload as string;
       });
   },
 });
