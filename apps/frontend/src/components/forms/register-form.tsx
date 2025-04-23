@@ -75,7 +75,7 @@ export function RegisterForm() {
     return (
         <Card className="w-full">
             <CardHeader className="text-center space-y-1">
-                <CardTitle className="text-3xl font-semibold text-gray-100">Create Account</CardTitle>
+                <CardTitle className="text-3xl font-semibold dark:text-gray-100">Create Account</CardTitle>
                 <CardDescription className="text-base text-muted-foreground">
                     Enter your details to create your account
                 </CardDescription>

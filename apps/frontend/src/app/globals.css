@@ -7,6 +7,28 @@ html,body{
   padding: 0;
 }
 
+.wh-bg{
+  background:
+      radial-gradient(34px at calc(100% + calc(34px*.866)) 50%,#000000 99%, #0000 101%) 0 calc(-5*34px/2),
+      radial-gradient(34px at calc(100% + calc(34px*.866)) 50%,#000000 99%, #0000 101%) calc(-2*calc(34px*.866)) calc(34px/2),
+      radial-gradient(34px at 100% 50%,#ffffff 99%, #0000 101%) 0 calc(-2*34px),
+      radial-gradient(34px,#000000 99%, #0000 101%) calc(34px*.866) calc(-5*34px/2),
+      radial-gradient(34px,#ffffff 99%, #0000 101%) calc(34px*.866) calc( 5*34px/2),
+      radial-gradient(34px at 100% 100%,#000000 99%, #0000 101%) 0 calc(-1*34px),   
+      radial-gradient(34px at 0%   50% ,#000000 99%, #0000 101%) 0 calc(-4*34px),
+      radial-gradient(34px,#ffffff 99%, #0000 101%) calc(-1*calc(34px*.866)) calc(-7*34px/2),
+      radial-gradient(34px,#000000 99%, #0000 101%) calc(-1*calc(34px*.866)) calc(-5*34px/2),
+      radial-gradient(34px at 100% 50%,#ffffff 99%, #0000 101%) calc(-2*calc(34px*.866)) 34px,
+      radial-gradient(34px,#000000 99%, #0000 101%) calc(-1*calc(34px*.866)) calc(34px/ 2),
+      radial-gradient(34px,#ffffff 99%, #0000 101%) calc(-1*calc(34px*.866)) calc(34px/-2),
+      radial-gradient(34px,#000000 99%, #0000 101%) 0 calc(-1*34px),
+      radial-gradient(34px,#ffffff 99%, #0000 101%) calc(34px*.866) calc(34px/-2),
+      radial-gradient(34px,#000000 99%, #0000 101%) calc(34px*.866) calc(34px/ 2) 
+      #ffffff;
+background-size: calc(4*calc(34px*.866)) calc(6*34px);
+
+
+}
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

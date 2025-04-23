@@ -1,10 +1,10 @@
 export function Footer() {
     return (
         <footer className="bg-white border-t">
-            <div className="container mx-auto px-4 py-6">
+            <div className="container mx-auto px-2 py-2">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="text-gray-600 text-sm">
-                        © {new Date().getFullYear()} Your Company Name. All rights reserved.
+                        © {new Date().getFullYear()}. All rights reserved.
                     </div>
 
                     <div className="mt-4 md:mt-0">

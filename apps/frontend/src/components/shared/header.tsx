@@ -36,13 +36,13 @@ export function Header() {
                     {/* Avatar Dropdown */}
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" className="flex items-center space-x-2 bg-gray-600 hover:bg-gray-300 rounded-full p-2">
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                    <AvatarFallback>CN</AvatarFallback>
-                                </Avatar>
 
-                            </Button>
+                            <Avatar>
+                                <AvatarImage src="https://github.com/shadcn.png" />
+                                <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
+
+
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="w-56">
                             <DropdownMenuLabel>

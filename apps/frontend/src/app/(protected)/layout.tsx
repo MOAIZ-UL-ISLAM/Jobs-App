@@ -16,7 +16,9 @@ export default function ProtectedLayout({
 }) {
     const router = useRouter();
     const dispatch = useDispatch();
-    const { isAuthenticated, loading } = useSelector((state: RootState) => state.auth);
+    const { isAuthenticated, loading } = useSelector(
+        (state: RootState) => state.auth
+    );
 
     useEffect(() => {
         if (!isAuthenticated && !loading) {
@@ -32,12 +34,16 @@ export default function ProtectedLayout({
 
     return (
         <div className="min-h-screen bg-gray-100">
-            <Header />
-            <Sidebar />
-            <main className="container mx-auto px-4 py-8">
-                {children}
-            </main>
-            <Footer />
+            <div className="flex flex-col lg:flex-row min-h-screen">
+                <Sidebar />
+                <div className="flex flex-col flex-1">
+                    <Header />
+                    <main className="flex-1 p-4 overflow-y-auto">
+                        {children}
+                    </main>
+                    <Footer />
+                </div>
+            </div>
         </div>
     );
 }

@@ -5,20 +5,16 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
     Home,
-    BarChart2,
-    Building2,
-    Folder,
-    Wallet,
-    Receipt,
-    CreditCard,
-    Users2,
-    Shield,
-    MessagesSquare,
-    Video,
+    School,
+    Scale,
+    History,
+    Newspaper,
     Settings,
     HelpCircle,
     Menu,
     ChevronLeft,
+    IdCard,
+    BellRing,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -26,16 +22,12 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/comp
 
 const navigation = [
     { name: "Dashboard", href: "/", icon: Home },
-    { name: "Analytics", href: "/analytics", icon: BarChart2 },
-    { name: "Organization", href: "/organization", icon: Building2 },
-    { name: "Projects", href: "/projects", icon: Folder },
-    { name: "Transactions", href: "/transactions", icon: Wallet },
-    { name: "Invoices", href: "/invoices", icon: Receipt },
-    { name: "Payments", href: "/payments", icon: CreditCard },
-    { name: "Members", href: "/members", icon: Users2 },
-    { name: "Permissions", href: "/permissions", icon: Shield },
-    { name: "Chat", href: "/chat", icon: MessagesSquare },
-    { name: "Meetings", href: "/meetings", icon: Video },
+    { name: "Persoal Information", href: "/personal-info", icon: IdCard },
+    { name: "Educational Information", href: "/education", icon: School },
+    { name: "Experience", href: "/experience", icon: Scale },
+    { name: "Application History", href: "/history", icon: History },
+    { name: "Avaliable Jobs", href: "/jobs", icon: Newspaper },
+    { name: "Notifications", href: "/notifications", icon: BellRing },
 ]
 
 const bottomNavigation = [
@@ -85,7 +77,7 @@ export function Sidebar() {
                 </button>
                 <div
                     className={cn(
-                        "fixed inset-y-0 z-20 flex flex-col bg-background transition-all duration-300 ease-in-out lg:static",
+                        "fixed inset-y-0 z-20 flex min-h-screen flex-col bg-background transition-all duration-300 ease-in-out lg:static",
                         isCollapsed ? "w-[72px]" : "w-72",
                         isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
                     )}

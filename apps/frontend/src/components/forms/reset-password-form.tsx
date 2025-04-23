@@ -64,7 +64,7 @@ export function ResetPasswordForm() {
     return (
         <Card className="w-full">
             <CardHeader className="text-center space-y-1">
-                <CardTitle className="text-3xl font-semibold text-gray-100">Reset Password</CardTitle>
+                <CardTitle className="text-3xl font-semibold dark:text-gray-100">Reset Password</CardTitle>
                 <CardDescription className="text-base text-muted-foreground">
                     Enter your new password
                 </CardDescription>

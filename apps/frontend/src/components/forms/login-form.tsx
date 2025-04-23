@@ -70,7 +70,7 @@ export function LoginForm() {
     return (
         <Card className="w-full">
             <CardHeader className="text-center space-y-1">
-                <CardTitle className="text-3xl font-semibold text-gray-100">Welcome Back</CardTitle>
+                <CardTitle className="text-3xl font-semibold dark:text-gray-100">Welcome Back</CardTitle>
                 <CardDescription className="text-base text-muted-foreground">
                     Sign in to access your account
                 </CardDescription>
