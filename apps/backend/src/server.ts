@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import app from './app';
-import connectDB from './config/db';
+import connectDB from './auth/config/db';
 import winston from 'winston';
 
 // Logger configuration

@@ -27,16 +27,21 @@ const UserSchema: Schema = new Schema({
         type: String,
         required: [true, 'First name is required'],
         trim: true,
+        uppercase: true,
     },
     lastName: {
         type: String,
         required: [true, 'Last name is required'],
         trim: true,
+        uppercase: true,
+
     },
     fatherName: {
         type: String,
         required: [true, 'Father name is required'],
         trim: true,
+        uppercase: true,
+
     },
     email: {
         type: String,
@@ -65,6 +70,8 @@ const UserSchema: Schema = new Schema({
         type: String,
         required: [true, 'District is required'],
         enum: districts,
+
+
     },
     password: {
         type: String,

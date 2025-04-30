@@ -14,8 +14,8 @@ import {
     validateEmail,
     validateOTP,
     validateResetPassword
-} from '../middleware/validation.middleware';
-import { authenticate, AuthRequest } from '../middleware/auth.middleware';
+} from '../../middleware/validation.middleware';
+import { authenticate, AuthRequest } from '../../middleware/auth.middleware';
 
 const router = Router();
 

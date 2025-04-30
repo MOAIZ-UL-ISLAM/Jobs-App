@@ -3,7 +3,7 @@ import express, { Express, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
-import authRoutes from './routes/auth.routes';
+import authRoutes from './auth/routes/auth.routes';
 
 const app: Express = express();
 

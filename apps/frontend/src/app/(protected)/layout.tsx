@@ -8,7 +8,7 @@ import { getProfile, logout } from '@/lib/redux/features/auth/auth-slice';
 import { Header } from '@/components/shared/header';
 import { Footer } from '@/components/shared/footer';
 import { Sidebar } from '@/components/shared/sidebar';
-
+import { RefreshCcw } from 'lucide-react';
 export default function ProtectedLayout({
     children,
 }: {
@@ -29,8 +29,8 @@ export default function ProtectedLayout({
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gray-100">
-                Loading
+            <div className="min-h-screen flex items-center justify-center bg-gray-100 ">
+                <RefreshCcw className=' animate-spin text-blue-700' size={120} />
             </div>
         );
     }
@@ -48,6 +48,7 @@ export default function ProtectedLayout({
                     <Header />
                     <main className="flex-1 p-4 overflow-y-auto">
                         {children}
+
                     </main>
                     <Footer />
                 </div>
